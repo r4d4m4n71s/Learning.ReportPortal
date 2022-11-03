@@ -1,4 +1,5 @@
-# Test Automation Framework Design
+# Learning.ReportPortal
+## Test Automation Framework Design
 
 1. CREATE PROJECT REPOSITORY
 2. CREATE TEST PROJECT
