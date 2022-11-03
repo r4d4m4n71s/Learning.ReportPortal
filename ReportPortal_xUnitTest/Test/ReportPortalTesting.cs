@@ -6,7 +6,7 @@ namespace ReportPortal_xUnitTest.Test;
 public class ReportPortalTesting : BaseTest
 {
     [Fact]
-    [Trait("UI", "Front")]
+    [Trait("Category", "Front")]
     public void TestLogin_Ok()
     {
         _ = new AuthModel(PageFactory, Configuration, LogProvider).
