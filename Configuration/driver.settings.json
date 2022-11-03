@@ -1,35 +1,24 @@
 {
   "Chrome": {
-    "type": "Chrome"    
+    "type": "Chrome",
+    "Arguments": [ "--start-maximized" ]
   },
   "BSWin11Chrome": {
     "type": "BrowserStackChrome",
+    "Arguments": [ "--start-maximized" ],
     "bstack:options": {
       "os": "Windows",
-      "osVersion": "11"
+      "osVersion": "11",
+      "local": "false",
+      "userName": "johnfranco_xcUFk8",
+      "accessKey": "cc6mavEwvsW16mFEPNze",
+      "browserName": "Chrome"
     },
     "ServiceUrl": "https://hub.browserstack.com/wd/hub/"
   },
-  // Common options between browser configurations
-  "commons": {
-    "Arguments": [
-      "--start-maximized",
-      "--incognito",
-      "--disable-extensions",
-      "--ignore-certificate-errors",
-      "--disable-popup-blocking"
-    ],
-    "bstack:options": {
-      "local": false,
-      "seleniumVersion": "4.4.0",
-      "userName": "johnfranco_xcUFk8",
-      "accessKey": "cc6mavEwvsW16mFEPNze",
-      "resolution": "1920x1080"
-    },
-    "Timeouts": {
-      "ImplicitWait": 1000,
-      "AsynchronousJavaScript": 120000,
-      "PageLoad": 120000
-    }
+  "Timeouts": {
+    "ImplicitWait": 1000,
+    "AsynchronousJavaScript": 120000,
+    "PageLoad": 120000
   }
 }
