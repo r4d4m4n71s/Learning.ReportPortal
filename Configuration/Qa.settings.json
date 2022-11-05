@@ -1,0 +1,13 @@
+{
+  "BaseUrl": "https://rp.epam.com",
+  "UserName": "",
+  "UserPassword": "",
+  "LoginPath": "ui/#login",
+  "DashboardPath": "ui/#automationtraining/dashboard",
+  //"BrowserProfiles": ["BSWin11Chrome","Chrome"],
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information"
+    }
+  }
+}
