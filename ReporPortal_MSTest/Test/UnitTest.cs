@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ReportPortal_MSTest.Util;
 using ReportPortal_POM.Models;
 using ReportPortal_POM.Util;
 using Test4Net.Logging.Interfaces;
@@ -13,7 +14,7 @@ namespace ReportPortal_MSTest.Test;
 public class UnitTest : BaseTest
 {
     [TestMethod]
-    [TestCategory("Unit")]
+    [TestCategory("unit")]
     public void TestGetUrlExtension_ok()
     {
         Configuration.GetUrl("DashboardPath").Should().
@@ -21,10 +22,18 @@ public class UnitTest : BaseTest
     }
 
     [TestMethod]
-    [TestCategory("Unit")]
+    [TestCategory("unit")]
     public void TestGetModelExtension_ok()
     {
         var fakeModel = new AuthModel(PageFactory, Configuration, LogProvider);
         fakeModel.GetModel<DashboardModel>().Should().NotBeNull();
+    }
+
+    [TestMethod]
+    [TestCategory("unit")]
+    [TestDataSource("TestData/LaunchXSuites.csv", typeof(CsvDataProvider))]
+    public void CheckDataSourceAttribute_Ok(IDictionary<string, object> suiteScenario)
+    {
+        suiteScenario.Should().NotBeNull();
     }
 }
