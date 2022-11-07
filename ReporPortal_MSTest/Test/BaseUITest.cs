@@ -31,27 +31,27 @@ public abstract class BaseTest : AbstractUiTest
             Console.WriteLine($" var {envVar.Key} : {envVar.Value}");   
         }
 
-        Console.WriteLine($"User {Conventions.EnvironmentVariableName.BrowserProfile.ToString()}: " +
-                          $"{Environment.GetEnvironmentVariable(Conventions.EnvironmentVariableName.BrowserProfile.ToString())}");
+        Console.WriteLine($"User {Conventions.EnvironmentVariableName.BROWSERPROFILE.ToString()}: " +
+                          $"{Environment.GetEnvironmentVariable(Conventions.EnvironmentVariableName.BROWSERPROFILE.ToString())}");
 
 
-        Console.WriteLine($"User {Conventions.EnvironmentVariableName.BrowserProfile.ToString()}: "+
-            $"{Environment.GetEnvironmentVariable(Conventions.EnvironmentVariableName.BrowserProfile.ToString(), EnvironmentVariableTarget.User)}");
+        Console.WriteLine($"User {Conventions.EnvironmentVariableName.BROWSERPROFILE.ToString()}: "+
+            $"{Environment.GetEnvironmentVariable(Conventions.EnvironmentVariableName.BROWSERPROFILE.ToString(), EnvironmentVariableTarget.User)}");
 
-        Console.WriteLine($"Process {Conventions.EnvironmentVariableName.BrowserProfile.ToString()}: " +
-                          $"{Environment.GetEnvironmentVariable(Conventions.EnvironmentVariableName.BrowserProfile.ToString(), EnvironmentVariableTarget.Process)}");
+        Console.WriteLine($"Process {Conventions.EnvironmentVariableName.BROWSERPROFILE.ToString()}: " +
+                          $"{Environment.GetEnvironmentVariable(Conventions.EnvironmentVariableName.BROWSERPROFILE.ToString(), EnvironmentVariableTarget.Process)}");
 
-        Console.WriteLine($"Machine {Conventions.EnvironmentVariableName.BrowserProfile.ToString()}: " +
-                          $"{Environment.GetEnvironmentVariable(Conventions.EnvironmentVariableName.BrowserProfile.ToString(), EnvironmentVariableTarget.Machine)}");
+        Console.WriteLine($"Machine {Conventions.EnvironmentVariableName.BROWSERPROFILE.ToString()}: " +
+                          $"{Environment.GetEnvironmentVariable(Conventions.EnvironmentVariableName.BROWSERPROFILE.ToString(), EnvironmentVariableTarget.Machine)}");
 
 
         InitFactories(Environment.GetEnvironmentVariable(
-            Conventions.EnvironmentVariableName.BrowserProfile.ToString(), EnvironmentVariableTarget.User), DriverSettings);
+            Conventions.EnvironmentVariableName.BROWSERPROFILE.ToString()), DriverSettings);
 
         Configuration = new ConfigurationBuilder()
             .SetBasePath(SetupPath)
             .AddEnvironmentVariables()
-            .AddJsonFile($"{Environment.GetEnvironmentVariable(Conventions.EnvironmentVariableName.AppEnv.ToString())}.settings.json",
+            .AddJsonFile($"{Environment.GetEnvironmentVariable(Conventions.EnvironmentVariableName.APPENV.ToString())}.settings.json",
                 optional: true, reloadOnChange: true).Build();
 
         LogProvider = ConfigureLogger(Configuration.GetSection("Logging"));

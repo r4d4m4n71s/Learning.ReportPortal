@@ -18,7 +18,7 @@ internal static class Conventions
     /// </summary>
     public enum EnvironmentVariableName
     {
-        AppEnv,
-        BrowserProfile
+        APPENV,
+        BROWSERPROFILE
     }
 }
