@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System.Collections;
+using Microsoft.Extensions.Configuration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ReportPortal_MSTest.Util;
 using Test4Net.UITest.Models;
@@ -25,6 +26,15 @@ public abstract class BaseTest : AbstractUiTest
     
     protected BaseTest() 
     {
+        foreach (DictionaryEntry envVar in Environment.GetEnvironmentVariables())
+        {
+            Console.WriteLine($" var {envVar.Key} : {envVar.Value}");   
+        }
+
+        Console.WriteLine($"User {Conventions.EnvironmentVariableName.BrowserProfile.ToString()}: " +
+                          $"{Environment.GetEnvironmentVariable(Conventions.EnvironmentVariableName.BrowserProfile.ToString())}");
+
+
         Console.WriteLine($"User {Conventions.EnvironmentVariableName.BrowserProfile.ToString()}: "+
             $"{Environment.GetEnvironmentVariable(Conventions.EnvironmentVariableName.BrowserProfile.ToString(), EnvironmentVariableTarget.User)}");
 
