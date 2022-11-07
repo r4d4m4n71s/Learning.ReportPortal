@@ -3,9 +3,9 @@
 
 [CmdletBinding()]
 param (
-	 [Parameter(Mandatory=$true,Position=1)][alias("folderLookup")][string]$folderLookup,
-	 [Parameter(Mandatory=$true,Position=2)][alias("filterTest")][string]$filterTest,
-	 [Parameter(Mandatory=$false,Position=3)][alias("filterTag")][string]$filterTag="TestCategory=unit|Category=unit"
+	 [Parameter(Mandatory=$true,Position=1)][alias("folder-Lookup")][string]$folderLookup,
+	 [Parameter(Mandatory=$true,Position=2)][alias("filter-Test")][string]$filterTest,
+	 [Parameter(Mandatory=$false,Position=3)][alias("filter-Tag")][string]$filterTag="TestCategory=unit|Category=unit"
 )
 [Console]::WriteLine("folderLookup: "+$folderLookup)
 [Console]::WriteLine("filterTest: "+$filterTest)
