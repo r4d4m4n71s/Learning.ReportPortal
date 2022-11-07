@@ -14,6 +14,7 @@ public class LaunchesModel : AbstractModel
 {
     protected Uri GridUrl;
     protected readonly LaunchesPage LaunchesPage;
+    protected string NavigationPath = "/all";
 
     /// <summary>
     /// Constructor
@@ -22,10 +23,24 @@ public class LaunchesModel : AbstractModel
     /// <param name="configuration"></param>
     /// <param name="logProvider"></param>
     public LaunchesModel(IPageFactory pageFactory, IConfiguration configuration, ILogProvider logProvider) :
-        base(pageFactory, configuration, logProvider)
+        this(pageFactory, configuration, logProvider, string.Empty)
+    {}
+
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="pageFactory"></param>
+    /// <param name="configuration"></param>
+    /// <param name="logProvider"></param>
+    /// <param name="navigationPath"></param>
+    public LaunchesModel(IPageFactory pageFactory, IConfiguration configuration, ILogProvider logProvider,
+        string navigationPath): base(pageFactory, configuration, logProvider)
     {
+        if (!string.IsNullOrEmpty(navigationPath))
+            NavigationPath = NavigationPath + "/" + navigationPath;
+
         LaunchesPage = PageFactory.GetPage<LaunchesPage>();
-        GridUrl = new Uri(Configuration.GetUrl("LaunchesPath") + "/all");
+        GridUrl = new Uri(Configuration.GetUrl("LaunchesPath") + NavigationPath);
     }
 
     /// <summary>
@@ -39,10 +54,8 @@ public class LaunchesModel : AbstractModel
     public LaunchesModel ValidateCellValues(int dataIdAttrValue, string columnName, string expectedValue)
     {
         var page = PageFactory.GetPage<LaunchesPage>();
-        
-        if(!page.Browser.Driver.Url.Equals(GridUrl.ToString()))
-            page.GoToUrl(GridUrl);
-        
+        EnsureNavigationToTheBoard();
+
         var total = page.GetCellValue(dataIdAttrValue, columnName);
         total.Should().BeEquivalentTo(expectedValue, $"{columnName} doesn't match for data-id: {dataIdAttrValue}");
         return this;
@@ -59,12 +72,26 @@ public class LaunchesModel : AbstractModel
     public LaunchesModel ValidateCellValues(string rowName, string columnName, string expectedValue)
     {
         var page = PageFactory.GetPage<LaunchesPage>();
+        EnsureNavigationToTheBoard();
+
+        var total = page.GetCellValue(rowName, columnName);
+        total.Should().BeEquivalentTo(expectedValue, $"{columnName} doesn't match for row with name: {rowName}");
+        return this;
+    }
+
+    /// <summary>
+    /// If the launches board is not the current url
+    /// navigates to it and validates was successfully.
+    /// </summary>
+    /// <returns></returns>
+    public LaunchesModel EnsureNavigationToTheBoard()
+    {
+        var page = PageFactory.GetPage<LaunchesPage>();
 
         if (!page.Browser.Driver.Url.Equals(GridUrl.ToString()))
             page.GoToUrl(GridUrl);
 
-        var total = page.GetCellValue(rowName, columnName);
-        total.Should().BeEquivalentTo(expectedValue, $"{columnName} doesn't match for row with name: {rowName}");
+        page.Browser.Driver.Url.Should().BeEquivalentTo(GridUrl.ToString());
         return this;
     }
 }
