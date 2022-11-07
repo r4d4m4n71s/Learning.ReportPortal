@@ -25,11 +25,18 @@ public abstract class BaseTest : AbstractUiTest
     
     protected BaseTest() 
     {
-        Console.WriteLine($"{Conventions.EnvironmentVariableName.BrowserProfile.ToString()}: "+
-            $"{Environment.GetEnvironmentVariable(Conventions.EnvironmentVariableName.BrowserProfile.ToString())}");
-        
+        Console.WriteLine($"User {Conventions.EnvironmentVariableName.BrowserProfile.ToString()}: "+
+            $"{Environment.GetEnvironmentVariable(Conventions.EnvironmentVariableName.BrowserProfile.ToString(), EnvironmentVariableTarget.User)}");
+
+        Console.WriteLine($"Process {Conventions.EnvironmentVariableName.BrowserProfile.ToString()}: " +
+                          $"{Environment.GetEnvironmentVariable(Conventions.EnvironmentVariableName.BrowserProfile.ToString(), EnvironmentVariableTarget.Process)}");
+
+        Console.WriteLine($"Machine {Conventions.EnvironmentVariableName.BrowserProfile.ToString()}: " +
+                          $"{Environment.GetEnvironmentVariable(Conventions.EnvironmentVariableName.BrowserProfile.ToString(), EnvironmentVariableTarget.Machine)}");
+
+
         InitFactories(Environment.GetEnvironmentVariable(
-            Conventions.EnvironmentVariableName.BrowserProfile.ToString()), DriverSettings);
+            Conventions.EnvironmentVariableName.BrowserProfile.ToString(), EnvironmentVariableTarget.User), DriverSettings);
 
         Configuration = new ConfigurationBuilder()
             .SetBasePath(SetupPath)
