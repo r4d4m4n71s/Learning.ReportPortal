@@ -25,6 +25,9 @@ public abstract class BaseTest : AbstractUiTest
     
     protected BaseTest() 
     {
+        Console.WriteLine($"{Conventions.EnvironmentVariableName.BrowserProfile.ToString()}: "+
+            $"{Environment.GetEnvironmentVariable(Conventions.EnvironmentVariableName.BrowserProfile.ToString())}");
+        
         InitFactories(Environment.GetEnvironmentVariable(
             Conventions.EnvironmentVariableName.BrowserProfile.ToString()), DriverSettings);
 
