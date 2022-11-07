@@ -1,12 +1,8 @@
 ﻿using FluentAssertions;
-using Microsoft.Extensions.Configuration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ReportPortal_MSTest.Util;
 using ReportPortal_POM.Models;
 using ReportPortal_POM.Util;
-using Test4Net.Logging.Interfaces;
-using Test4Net.Logging.Provider;
-using Test4Net.UI.POM.Page.Interfaces;
 
 namespace ReportPortal_MSTest.Test;
 

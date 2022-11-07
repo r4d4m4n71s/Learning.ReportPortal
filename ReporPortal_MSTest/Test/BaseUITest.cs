@@ -2,7 +2,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ReportPortal_MSTest.Util;
 using Test4Net.UITest.Models;
-using ExecutionContext = Test4Net.UITest.Models.ExecutionContext;
 
 namespace ReportPortal_MSTest.Test;
 
@@ -23,18 +22,9 @@ public abstract class BaseTest : AbstractUiTest
     /// Configurations from json files
     /// </summary>
     protected readonly IConfiguration Configuration;
-
-    [ClassInitialize]
-    public static void ClassInitialize(TestContext context)
-    {
-       
-    }
-
+    
     protected BaseTest() 
     {
-        Environment.SetEnvironmentVariable(Conventions.EnvironmentVariableName.BrowserProfile.ToString(), "Chrome");
-        Environment.SetEnvironmentVariable(Conventions.EnvironmentVariableName.AppEnv.ToString(), Conventions.AppEnvironment.Dev.ToString());
-
         InitFactories(Environment.GetEnvironmentVariable(
             Conventions.EnvironmentVariableName.BrowserProfile.ToString()), DriverSettings);
 
@@ -46,5 +36,4 @@ public abstract class BaseTest : AbstractUiTest
 
         LogProvider = ConfigureLogger(Configuration.GetSection("Logging"));
     }
-    
 }

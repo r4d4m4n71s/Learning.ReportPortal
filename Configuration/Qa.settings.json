@@ -1,9 +1,10 @@
 {
   "BaseUrl": "https://rp.epam.com",
-  "UserName": "",
-  "UserPassword": "",
   "LoginPath": "ui/#login",
   "DashboardPath": "ui/#automationtraining/dashboard",
+  "LaunchesPath": "ui/#automationtraining/launches",
+  "UserName": "superadmin",
+  "UserPassword": "erebus",
   //"BrowserProfiles": ["BSWin11Chrome","Chrome"],
   "Logging": {
     "LogLevel": {

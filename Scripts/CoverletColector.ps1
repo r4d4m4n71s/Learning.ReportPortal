@@ -2,11 +2,14 @@
 # https://github.com/coverlet-coverage/coverlet/blob/master/Documentation/GlobalTool.md
 
 [CmdletBinding()]
-param ($folderLookup,$filterTest)
-$filterTag = "TestCategory=unit|Category=unit"
-
+param (
+	 [Parameter(Mandatory=$true,Position=1)][alias("folderLookup")][string]$folderLookup,
+	 [Parameter(Mandatory=$true,Position=2)][alias("filterTest")][string]$filterTest,
+	 [Parameter(Mandatory=$false,Position=3)][alias("filterTag")][string]$filterTag="TestCategory=unit|Category=unit"
+)
 [Console]::WriteLine("folderLookup: "+$folderLookup)
 [Console]::WriteLine("filterTest: "+$filterTest)
+[Console]::WriteLine("filterTag: "+$filterTag)
 
 $hasMatches = $false
 Get-ChildItem $folderLookup -Recurse |
