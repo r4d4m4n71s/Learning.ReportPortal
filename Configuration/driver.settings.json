@@ -1,0 +1,26 @@
+{
+  "Chrome": {
+    "Type": "Chrome",
+    "Arguments": [ "--start-maximized" ]
+  },
+  "BSWin11Chrome": {
+    "Type": "BrowserStackChrome",
+    "Arguments": [ "--start-maximized" ],
+    "bstack:options": {
+      "os": "Windows",
+      "osVersion": "11",
+      "local": "false",
+      "userName": "johnfranco_xcUFk8",
+      "accessKey": "cc6mavEwvsW16mFEPNze",
+      "browserName": "Chrome"
+    },
+    "ServiceUrl": "https://hub.browserstack.com/wd/hub/"
+  },
+  "Commons": {
+    "Timeouts": {
+      "ImplicitWait": 10000,
+      "AsynchronousJavaScript": 120000,
+      "PageLoad": 120000
+    }
+  }  
+}
