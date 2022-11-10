@@ -1,5 +1,5 @@
+using FluentAssertions;
 using ReportPortal_POM.Models;
-using ReportPortal_POM.Util;
 
 namespace ReportPortal_xUnitTest.Test;
 
@@ -7,11 +7,15 @@ public class ReportPortalTesting : BaseTest
 {
     [Fact]
     [Trait("Category", "Front")]
-    public void TestLogin_Ok()
+    public void TestLogin_Successfully()
     {
-        _ = new AuthModel(PageFactory, Configuration, LogProvider).
-            PerformLogin(Configuration["UserName"], Configuration["UserPassword"])
-            .GetModel<DashboardModel>().IsDashboardOpen();
-        LogProvider.GetLogger<ReportPortalTesting>().Info("Login test ok!.");
+        var authModel = new AuthModel(PageFactory, Configuration, LogProvider).
+            PerformLogin(Configuration["UserName"], Configuration["UserPassword"]);
+
+        var dashboardModel = new DashboardModel(PageFactory, Configuration, LogProvider);
+        
+        dashboardModel.NavigateTo();
+        dashboardModel.IsPageHeaderDisplayed().Should().BeTrue();
+        dashboardModel.GetPageHeaderText().Should().BeEquivalentTo("ALL DASHBOARDS");
     }
 }

@@ -15,6 +15,7 @@ using Test4Net.Logging.Provider;
 using Test4Net.UI.POM.Page;
 using Test4Net.UI.POM.Page.Interfaces;
 using Test4Net.UI.WebBrowser.Browser;
+using Test4Net.UI.WebBrowser.Driver;
 
 namespace ReportPortal_xUnitTest.UnitTest;
 
@@ -26,7 +27,7 @@ public class UnitTest
 
     public UnitTest()
     {
-        PageFactory = new PageFactory(new WebBrowser("fakeConfId", new Driver_Fake()));
+        PageFactory = new PageFactory(null,string.Empty);
 
         Configuration = new ConfigurationBuilder()
             .AddEnvironmentVariables()

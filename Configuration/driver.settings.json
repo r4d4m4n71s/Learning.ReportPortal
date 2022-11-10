@@ -1,10 +1,10 @@
 {
   "Chrome": {
-    "type": "Chrome",
+    "Type": "Chrome",
     "Arguments": [ "--start-maximized" ]
   },
   "BSWin11Chrome": {
-    "type": "BrowserStackChrome",
+    "Type": "BrowserStackChrome",
     "Arguments": [ "--start-maximized" ],
     "bstack:options": {
       "os": "Windows",
@@ -16,9 +16,11 @@
     },
     "ServiceUrl": "https://hub.browserstack.com/wd/hub/"
   },
-  "Timeouts": {
-    "ImplicitWait": 1000,
-    "AsynchronousJavaScript": 120000,
-    "PageLoad": 120000
-  }
+  "Commons": {
+    "Timeouts": {
+      "ImplicitWait": 10000,
+      "AsynchronousJavaScript": 120000,
+      "PageLoad": 120000
+    }
+  }  
 }

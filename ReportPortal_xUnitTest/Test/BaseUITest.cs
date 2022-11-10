@@ -22,11 +22,11 @@ public abstract class BaseTest : AbstractUiTest
     protected readonly IConfiguration Configuration;
 
 
-    protected BaseTest() : base(
-        new ExecutionContext(
-        Environment.GetEnvironmentVariable(Conventions.EnvironmentVariableName.BrowserProfile.ToString(),
-            EnvironmentVariableTarget.User), DriverSettings))
+    protected BaseTest() 
     {
+        InitFactories(Environment.GetEnvironmentVariable(
+            Conventions.EnvironmentVariableName.BROWSERPROFILE.ToString()), DriverSettings);
+
         Configuration = new ConfigurationBuilder()
             .SetBasePath(SetupPath)
             .AddEnvironmentVariables()

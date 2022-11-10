@@ -5,6 +5,7 @@ using ReportPortal_POM.Pages;
 using ReportPortal_POM.Util;
 using Test4Net.Logging.Interfaces;
 using Test4Net.UI.POM.Page.Interfaces;
+using Test4Net.Util.Thread;
 
 namespace ReportPortal_POM.Models;
 
@@ -21,14 +22,26 @@ public class DashboardModel : IPomModel
         LogProvider = logProvider;
     }
 
-    public IPomModel IsDashboardOpen()
+    /// <summary>
+    /// Navigate to dashboard page
+    /// </summary>
+    public void NavigateTo()
     {
         var page = PageFactory.GetPage<DashboardPage>();
         page.Navigate().GoToUrl(Configuration.GetUrl("DashboardPath"));
-
-        // Validate at least page tittle is displayed
-        page.Header.Displayed.Should().BeTrue();
-        LogProvider.GetLogger<DashboardModel>().Info("Dashboard is open");
-        return this;
     }
+
+    /// <summary>
+    /// Returns true if page header is displayed
+    /// </summary>
+    /// <returns></returns>
+    public bool IsPageHeaderDisplayed() =>
+        PageFactory.GetPage<DashboardPage>().Header.Displayed;
+    
+    /// <summary>
+    /// Returns page header title
+    /// </summary>
+    /// <returns></returns>
+    public string GetPageHeaderText() =>
+        PageFactory.GetPage<DashboardPage>().Header.Text;
 }

@@ -25,16 +25,10 @@ public class AuthModel : IPomModel
     {
         var page = PageFactory.GetPage<LoginPage>();
         page.Navigate().GoToUrl(Configuration.GetUrl("LoginPath"));
-        
-        // Ensure navigation to login page ok
-        page.Browser.Driver.Url.Should().BeEquivalentTo(Configuration.GetUrl("LoginPath").ToString());
-        
         page.UserNameInput.SendKeys(userName);
         page.UserPasswordInput.SendKeys(password);
         page.LoginButton.Click();
-        LogProvider.GetLogger<AuthModel>().Info("Login executed.");
         return this;
     }
-
-   
+    
 }
