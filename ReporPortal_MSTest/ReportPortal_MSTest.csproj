@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>disable</Nullable>
+
+		<IsPackable>false</IsPackable>
+
+		<UserSecretsId>684db5e9-daae-4936-a4bd-b1b9dd536ca1</UserSecretsId>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.1" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.4.0" />
+		<PackageReference Include="MSTest.TestAdapter" Version="2.2.10" />
+		<PackageReference Include="MSTest.TestFramework" Version="2.2.10" />
+		<PackageReference Include="coverlet.collector" Version="3.2.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="107.0.5304.6200" />
+		<PackageReference Include="Test4Net.UITest" Version="2022.11.5.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\ReportPortal_POM\ReportPortal_POM.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\Configuration\**" CopyToOutputDirectory="PreserveNewest" LinkBase="Configuration\" />
+		<None Include="..\Scripts\**" CopyToOutputDirectory="PreserveNewest" LinkBase="Scripts\" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Update="TestData\LaunchXSuites.csv">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="TestData\Launches.csv">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+</Project>

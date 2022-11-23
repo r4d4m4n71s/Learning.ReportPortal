@@ -1,2 +1,9 @@
 # Learning.ReportPortal
-Use this repo for training purposes only
+
+## Test Runners
+1 ADD ALTERNATIVE TEST RUNNER TO YOUR PROJECT
+
+2 IMPLEMENT DATA DRIVEN TESTS
+
+3 PARALLELIZATION
+
