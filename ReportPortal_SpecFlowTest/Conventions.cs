@@ -1,4 +1,4 @@
-﻿namespace ReportPortal_MSTest.Util;
+﻿namespace ReportPortal_SpecFlowTest;
 
 internal static class Conventions
 {

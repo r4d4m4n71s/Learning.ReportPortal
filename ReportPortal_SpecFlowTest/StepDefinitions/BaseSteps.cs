@@ -1,14 +1,10 @@
-﻿using System.Collections;
-using Microsoft.Extensions.Configuration;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ReportPortal_MSTest.Util;
+﻿using Microsoft.Extensions.Configuration;
 using Test4Net.UITest.Models;
 
-namespace ReportPortal_MSTest.Test;
+namespace ReportPortal_SpecFlowTest.StepDefinitions;
 
-[TestClass]
-public abstract class BaseTest : AbstractUiTest
-{
+public abstract class BaseSteps : AbstractUiTest
+{ 
     /// <summary>
     /// Path to folder with configurations
     /// </summary>
@@ -23,8 +19,8 @@ public abstract class BaseTest : AbstractUiTest
     /// Configurations from json files
     /// </summary>
     protected readonly IConfiguration Configuration;
-    
-    protected BaseTest() 
+
+    protected BaseSteps()
     {
         InitFactories(Environment.GetEnvironmentVariable(
             Conventions.EnvironmentVariableName.BROWSERPROFILE.ToString()), DriverSettings);

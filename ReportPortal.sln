@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportPortal_POM", "ReportP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportPortal_MSTest", "ReporPortal_MSTest\ReportPortal_MSTest.csproj", "{04858E5D-FFBE-46D6-A835-886F61659556}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportPortal_SpecFlowTest", "ReportPortal_SpecFlowTest\ReportPortal_SpecFlowTest.csproj", "{CD6FC496-4029-40E6-B170-53C260DED043}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{04858E5D-FFBE-46D6-A835-886F61659556}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04858E5D-FFBE-46D6-A835-886F61659556}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04858E5D-FFBE-46D6-A835-886F61659556}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD6FC496-4029-40E6-B170-53C260DED043}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD6FC496-4029-40E6-B170-53C260DED043}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD6FC496-4029-40E6-B170-53C260DED043}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD6FC496-4029-40E6-B170-53C260DED043}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

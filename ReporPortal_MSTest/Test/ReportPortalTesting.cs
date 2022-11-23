@@ -45,7 +45,7 @@ public class ReportPortalTesting : BaseTest
     {
         TestLogin_Ok();
 
-        _ = new LaunchModel(PageFactory, Configuration, LogProvider, Convert.ToInt32(suiteScenario["LAUNCH"])).
+        _ = new LaunchesModel(PageFactory, Configuration, LogProvider, suiteScenario["LAUNCH"].ToString()).
             ValidateCellValues(suiteScenario["SUITE NAME"].ToString(), "TOTAL", suiteScenario["TOTAL"].ToString()).
             ValidateCellValues(suiteScenario["SUITE NAME"].ToString(), "PASSED", suiteScenario["PASSED"].ToString()).
             ValidateCellValues(suiteScenario["SUITE NAME"].ToString(), "FAILED", suiteScenario["FAILED"].ToString()).
