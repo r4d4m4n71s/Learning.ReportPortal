@@ -1,11 +1,13 @@
 {
   "BaseUrl": "http://localhost:8080/",
+  "ApiPath": "api/v1",
   "LoginPath": "ui/#login",
   "DashboardPath": "ui/#automationtraining/dashboard",
   "LaunchesPath": "ui/#automationtraining/launches",
   "UserName": "superadmin",
   "UserPassword": "erebus",
-  //"BrowserProfiles": ["BSWin11Chrome","Chrome"],
+  "ProjectName": "AUTOMATIONTRAINING",
+  "Uuid": "34540b5d-0f02-4150-a7be-2511fff832c5",
   "Logging": {
     "LogLevel": {
       "Default": "Information"
