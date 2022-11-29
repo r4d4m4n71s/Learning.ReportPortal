@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportPortal_MSTest", "Repo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportPortal_SpecFlowTest", "ReportPortal_SpecFlowTest\ReportPortal_SpecFlowTest.csproj", "{CD6FC496-4029-40E6-B170-53C260DED043}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportPortal_APITest", "ReportPortal_APITest\ReportPortal_APITest.csproj", "{76332E7B-C175-4BC0-BE76-3617C644CC34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportPortal_APITest", "ReportPortal_APITest\ReportPortal_APITest.csproj", "{76332E7B-C175-4BC0-BE76-3617C644CC34}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportPortal_APIClient", "ReportPortal_API\ReportPortal_APIClient.csproj", "{060F5A31-EEB1-43C8-B988-CD1C4C62ECE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportPortal_APIClient", "ReportPortal_API\ReportPortal_APIClient.csproj", "{060F5A31-EEB1-43C8-B988-CD1C4C62ECE1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

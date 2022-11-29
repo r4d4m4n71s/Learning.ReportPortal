@@ -1,4 +1,4 @@
-﻿namespace ReportPortal_APIClient.Abstractions;
+﻿namespace ReportPortal_APIClient.Domain;
 
 /// <summary>
 /// A factory abstraction that can create instances of <see cref="HttpClient" /> when required.

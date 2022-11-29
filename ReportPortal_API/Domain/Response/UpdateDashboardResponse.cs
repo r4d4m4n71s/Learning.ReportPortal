@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace ReportPortal_APIClient.Abstractions.Response;
+namespace ReportPortal_APIClient.Domain.Response;
 
 public class UpdateDashboardResponse
 {

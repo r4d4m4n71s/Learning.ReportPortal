@@ -1,7 +1,7 @@
 ﻿using System.Text.Json.Serialization;
-using ReportPortal_APIClient.Abstractions.Models;
+using ReportPortal_APIClient.Domain.Models;
 
-namespace ReportPortal_APIClient.Abstractions.Request
+namespace ReportPortal_APIClient.Domain.Request
 {
     public class UpdateDashboardRequest
     {

@@ -1,5 +1,5 @@
-﻿using ReportPortal_APIClient.Abstractions;
-using ReportPortal_APIClient.Abstractions.Resources;
+﻿using ReportPortal_APIClient.Domain;
+using ReportPortal_APIClient.Domain.Resources;
 using ReportPortal_APIClient.Resources;
 
 namespace ReportPortal_APIClient.Service;

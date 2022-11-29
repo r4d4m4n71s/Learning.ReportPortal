@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace ReportPortal_APIClient.Abstractions.Models
+namespace ReportPortal_APIClient.Domain.Models
 {
     public class WidgetModel
     {

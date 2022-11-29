@@ -1,9 +1,9 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace ReportPortal_APIClient.Abstractions.Response;
+namespace ReportPortal_APIClient.Domain.Response;
 
 public class CreateDashboardResponse
 {
     [JsonPropertyName("id")]
-    public string Id { get; set; }
+    public int Id { get; set; }
 }

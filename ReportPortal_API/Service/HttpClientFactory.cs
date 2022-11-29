@@ -1,5 +1,5 @@
 ﻿using System.Net.Http.Headers;
-using ReportPortal_APIClient.Abstractions;
+using ReportPortal_APIClient.Domain;
 using ReportPortal_APIClient.Extensions;
 
 namespace ReportPortal_APIClient.Service;
@@ -11,7 +11,7 @@ public class HttpClientFactory : IHttpClientFactory
 
     public HttpClientFactory(Uri baseUri, string token)
     {
-        _baseUri = baseUri;
+        _baseUri = baseUri.Normalize();
         _token = token;
     }
 
@@ -22,7 +22,7 @@ public class HttpClientFactory : IHttpClientFactory
 
         var httpClient = new HttpClient(httpClientHandler);
 
-        httpClient.BaseAddress = _baseUri.Normalize();
+        httpClient.BaseAddress = _baseUri;
 
         httpClient.DefaultRequestHeaders.Clear();
         httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));

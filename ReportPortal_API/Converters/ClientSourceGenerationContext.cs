@@ -1,12 +1,16 @@
 ﻿using System.Text.Json.Serialization;
+using ReportPortal_APIClient.Domain.Request;
+using ReportPortal_APIClient.Domain.Response;
 
 namespace ReportPortal_APIClient.Converters;
 
 /// <inheritdoc />
 [JsonSourceGenerationOptions(PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase)]
 
-[JsonSerializable(typeof(Abstractions.Request.CreateDashboardRequest))]
-[JsonSerializable(typeof(Abstractions.Request.UpdateDashboardRequest))]
+[JsonSerializable(typeof(CreateDashboardRequest))]
+[JsonSerializable(typeof(CreateDashboardResponse))]
+[JsonSerializable(typeof(UpdateDashboardRequest))]
+[JsonSerializable(typeof(UpdateDashboardResponse))]
 public partial class ClientSourceGenerationContext : JsonSerializerContext
 {
 }

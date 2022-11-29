@@ -1,16 +1,17 @@
-using ReportPortal_APIClient.Abstractions.Models;
-using ReportPortal_APIClient.Abstractions.Request;
+using FluentAssertions;
+using ReportPortal_APIClient.Domain.Models;
+using ReportPortal_APIClient.Domain.Request;
 
 namespace ReportPortal_APITest.Test;
 
 public class DashboardCrudTest : BaseTest
 {
-    private int _projectId = 22;
+    private int _projectId = 27;
 
     [Fact]
-    public void CreateTest()
+    public async Task CreateTest()
     {
-        var response = Service.Dashboard.CreateAsync(
+        var response = await Service.Dashboard.CreateAsync(
             new CreateDashboardRequest
             {
                 Description = "This is a new dashboard created from api",
@@ -18,13 +19,15 @@ public class DashboardCrudTest : BaseTest
                 Share = true
             });
 
+        // Check dashboard number is returned
+        response.Id.Should().BeGreaterThan(0);
         _projectId = response.Id;
     }
 
     [Fact]
-    public void UpdateTest()
+    public async Task UpdateTest()
     {
-        Service.Dashboard.UpdateAsync(
+        var response = await Service.Dashboard.UpdateAsync(
             _projectId,
             new UpdateDashboardRequest
             {
@@ -42,11 +45,18 @@ public class DashboardCrudTest : BaseTest
                     }
                 }
             });
+
+        // Validate response message
+        response.Message.Should().NotBeEmpty();
     }
 
     [Fact]
     public void DeleteTest()
     {
-        Service.Dashboard.DeleteAsync(22);
+        var act = () =>
+        {
+            Service.Dashboard.DeleteAsync(22);
+        };
+        act.Should().NotThrow();
     }
 }
