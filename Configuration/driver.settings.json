@@ -18,8 +18,8 @@
     },
     "ServiceUrl": "https://hub.browserstack.com/wd/hub/",
     "Timeouts": {
-      "ImplicitWait": 10000,
-      "AsynchronousJavaScript": 120000,
+      "ImplicitWait": 8000,
+      "AsynchronousJavaScript": 60000,
       "PageLoad": 120000
     }
   }  

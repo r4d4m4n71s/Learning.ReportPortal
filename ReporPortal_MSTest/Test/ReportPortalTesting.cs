@@ -1,3 +1,5 @@
+using System.Drawing;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ReportPortal_MSTest.Util;
 using ReportPortal_POM.Models;
@@ -54,5 +56,30 @@ public class ReportPortalTesting : BaseTest
             ValidateCellValues(suiteScenario["SUITE NAME"].ToString(), "AUTO BUG", suiteScenario["AUTO BUG"].ToString()).
             ValidateCellValues(suiteScenario["SUITE NAME"].ToString(), "SYSTEM ISSUE", suiteScenario["SYSTEM ISSUE"].ToString()).
             ValidateCellValues(suiteScenario["SUITE NAME"].ToString(), "TO INVESTIGATE", suiteScenario["TO INVESTIGATE"].ToString());
+    }
+
+    [TestMethod]
+    [TestCategory("Front")]
+    public void TestPercentageOfLaunchesWidgetResizing_Ok()
+    {
+        TestLogin_Ok();
+        var dashboardModel = new DashboardModel(PageFactory, Configuration, LogProvider);
+        dashboardModel.GoToDashBoard("14");
+
+        var widgetSizeBeforeResizing = dashboardModel.GetWidgetSize("OVERALL STATISTICS DONUT");
+        
+        var offset = new Point(114, 73);
+        dashboardModel.ResizeWidget("OVERALL STATISTICS DONUT", offset);
+
+        var widgetSizeAfterResizing = dashboardModel.GetWidgetSize("OVERALL STATISTICS DONUT");
+
+        var offsetResult = new Point(widgetSizeAfterResizing.X - widgetSizeBeforeResizing.X,
+            widgetSizeAfterResizing.Y - widgetSizeBeforeResizing.Y);
+
+        offsetResult.Should().BeEquivalentTo(offset);
+
+        // Case of success reset resizing to future testing!
+        dashboardModel.ResizeWidget("OVERALL STATISTICS DONUT", 
+            new Point(-115, -73));
     }
 }

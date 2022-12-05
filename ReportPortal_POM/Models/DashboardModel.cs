@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using System.Drawing;
+using FluentAssertions;
 using Microsoft.Extensions.Configuration;
 using ReportPortal_POM.Interfaces;
 using ReportPortal_POM.Pages;
@@ -21,14 +22,41 @@ public class DashboardModel : IPomModel
         LogProvider = logProvider;
     }
 
-    public IPomModel IsDashboardOpen()
+    public DashboardModel IsDashboardOpen()
     {
-        var page = PageFactory.GetPage<DashboardPage>();
-        page.Navigate().GoToUrl(Configuration.GetUrl("DashboardPath"));
-
-        // Validate at least page tittle is displayed
-        page.Header.Displayed.Should().BeTrue();
+        GoToDashBoard();
+        PageFactory.GetPage<DashboardPage>().Header.Displayed.Should().BeTrue();
         LogProvider.GetLogger<DashboardModel>().Info("Dashboard is open");
         return this;
+    }
+
+    public DashboardModel GoToDashBoard(string id = null)
+    {
+        var page = PageFactory.GetPage<DashboardPage>();
+        page.Navigate().GoToUrl(Configuration.GetUrl("DashboardPath") + (string.IsNullOrEmpty(id) ? "" : $"/{id}"));
+        return this;
+    }
+    public void MoveWidget(string name, Point offset)
+    {
+        var widget = PageFactory.GetPage<DashboardPage>().GetWidget(name);
+        widget.DragAndDropTo(offset);
+    }
+
+    public void ResizeWidget(string name, Point offset)
+    {
+        var widget = PageFactory.GetPage<DashboardPage>().GetWidget(name);
+        widget.ResizeToOffSet(offset);
+    }
+
+    public Point GetWidgetPosition(string name)
+    {
+        var widget = PageFactory.GetPage<DashboardPage>().GetWidget(name);
+        return widget.GetPosition();
+    }
+
+    public Point GetWidgetSize(string name)
+    {
+        var widget = PageFactory.GetPage<DashboardPage>().GetWidget(name);
+        return widget.GetSize();
     }
 }
