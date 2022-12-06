@@ -1,5 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
+using OpenQA.Selenium.Support.UI;
+using OpenQA.Selenium;
 using ReportPortal_POM.Interfaces;
+using Test4Net.UI.POM.Elements;
 
 namespace ReportPortal_POM.Util;
 
@@ -32,4 +35,28 @@ public static class GeneralExtensions
     /// <returns></returns>
     public static IEnumerable<object[]> ToEnumObj(this IEnumerable<IDictionary<string, object>> listDic) => 
         listDic.Select(dic => new object[] { dic }).ToList();
+
+    /// <summary>
+    /// Awaits for element instance
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="driver"></param>
+    /// <param name="by"></param>
+    /// <param name="secondsTimeOut"></param>
+    /// <param name="milSecondsPollInterval"></param>
+    /// <returns></returns>
+    public static T WaitForElement<T>(this IWebDriver driver, By by, 
+        int secondsTimeOut = 5, int milSecondsPollInterval = 250) where T : HtmlElement, new()
+    {
+        var fluentWait = new DefaultWait<IWebDriver>(driver)
+        {
+            Timeout = TimeSpan.FromSeconds(secondsTimeOut),
+            PollingInterval = TimeSpan.FromMilliseconds(milSecondsPollInterval)
+        };
+        /* Ignore the exception - NoSuchElementException that indicates that the element is not present */
+        fluentWait.IgnoreExceptionTypes(typeof(NoSuchElementException));
+        fluentWait.Message = "Element to be searched not found";
+
+        return (T)Activator.CreateInstance(typeof(T), fluentWait.Until(x => x.FindElement(by)));
+    }
 }
