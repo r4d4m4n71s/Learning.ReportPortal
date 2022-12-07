@@ -15,7 +15,7 @@ public class DashboardCrudTest : BaseTest
             new CreateDashboardRequest
             {
                 Description = "This is a new dashboard created from api",
-                Name = "Api dashboard "+new DateTime(),
+                Name = "Api dashboard "+ DateTime.Now,
                 Share = true
             });
 
